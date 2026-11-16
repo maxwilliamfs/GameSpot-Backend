@@ -27,7 +27,7 @@ API RESTfull programada em Python, com o uso de Webscrapping, banco de dados, te
 ### Execultando pelo terminal
 - Clonar o repositório:
 ```bash
-git clone [https://github.com/maxwilliamfs/GameSpot.git](https://github.com/maxwilliamfs/GameSpot.git)  
+git clone [https://github.com/maxwilliamfs/GameSpot.git](https://github.com/maxwilliamfs/GameSpot-Backend.git)  
 ```
 - Acessar o repositório:
 ```bash
