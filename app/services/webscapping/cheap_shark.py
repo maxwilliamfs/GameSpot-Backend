@@ -20,7 +20,6 @@ async def cheap_shark_search(top_games):
         for tries in range(max_tries):
             await asyncio.sleep(time_stamp)
             response = requests.get(cheap_shark_url, params={"title": game}, headers=headers)
-            print(response.status_code)
             if response.status_code == 200:
                 data = response.json()
                 game_cheap_id = ""
@@ -64,7 +63,8 @@ async def id_search(game_id):
                     price=get_store_price(game_prices, store_number)
                 )
                 prices_[store.value] = store_price_details
-            game_thumb = data["thumb"]
+            info_data = data["info"]
+            game_thumb = info_data["thumb"]
             game = CreateGameSchema(
                 title=data["info"]["title"],
                 thumb=game_thumb,
