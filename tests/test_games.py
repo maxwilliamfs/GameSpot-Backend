@@ -18,6 +18,7 @@ async def test_create_game(mocker):
     game = CreateGameSchema(
         title="Hollow Knight: SilkSong",
         developer="Team Chery",
+        thumb="https:thumb.com",
         all_time_cheapest_price=40.0,
         prices=prices_
     )
@@ -46,11 +47,13 @@ async def test_update_game(mocker):
     old_data = {
         "_id": fake_id,
         "title": "Hollow Knight: SilkSong",
+        "thumb": "https:thumb.com",
         "developer": "Team Cherry"
     }
     new_data = {
         "_id": fake_id,
         "title": "Hollow Knight: Silksong - Deluxe",
+        "thumb": "https:newthumb.com",
         "developer": "Team Cherry"
     }
     search_mock = mocker.patch(

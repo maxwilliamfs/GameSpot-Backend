@@ -64,9 +64,10 @@ async def id_search(game_id):
                     price=get_store_price(game_prices, store_number)
                 )
                 prices_[store.value] = store_price_details
-
+            game_thumb = data["thumb"]
             game = CreateGameSchema(
                 title=data["info"]["title"],
+                thumb=game_thumb,
                 all_time_cheapest_price=data["cheapestPriceEver"]["price"],
                 developer=get_developer(data["info"]["steamAppID"]),
                 prices=prices_

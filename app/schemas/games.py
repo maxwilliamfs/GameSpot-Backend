@@ -6,6 +6,7 @@ class StorePriceDetails(BaseModel):
 
 class CreateGameSchema(BaseModel):
     title: str
+    thumb: str
     developer: str
     all_time_cheapest_price: float
     prices: dict[StoresEnum, StorePriceDetails]
@@ -13,12 +14,14 @@ class CreateGameSchema(BaseModel):
 class UpdateGameSchema(BaseModel):
     title: str | None = None
     developer: str | None = None
+    thumb: str | None = None
     all_time_cheapest_price: float | None = None
     prices: dict[StoresEnum, StorePriceDetails] | None = None
 
 class GameResponseSchema(BaseModel):
     _id: str
     title: str
+    thumb: str
     developer: str
     all_time_cheapest_price: float
     prices: dict[StoresEnum, StorePriceDetails]

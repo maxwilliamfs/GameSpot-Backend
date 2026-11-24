@@ -9,6 +9,23 @@ from fastapi import HTTPException
 from jose import jwt
 from datetime import timedelta,datetime,timezone
 from fastapi.security import OAuth2PasswordRequestForm
+from app.services.user import update
+from app.schemas.user import UserCreateSchema, UserUpdateAdminSchema
+
+async def create_adm():
+    adm = await get_user(settings.DEFAULT_ADM_EMAIL)
+    if adm is None:
+        admi = UserCreateSchema(
+            email=settings.DEFAULT_ADM_EMAIL,
+            password=settings.DEFAULT_ADM_PASSWORD,
+            name="admin"
+        )
+        response = await create(admi)
+        upd_data = UserUpdateAdminSchema(
+            email=settings.DEFAULT_ADM_EMAIL,
+            admin=True
+        )
+        await update(upd_data,response["id"])
 
 async def create(user : UserCreateSchema):
     dual_user = await get_user(user.email)
